@@ -29,7 +29,6 @@ public class ProductDAO {
    //add
    public int setProductAdd(ProductDTO productDTO) throws Exception{
       return sqlSession.insert(NAMESPACE+"setProductAdd", productDTO);
-      
    }   
    
    //getDetail
@@ -47,7 +46,9 @@ public class ProductDAO {
    public Long getpProductNum() throws Exception {
       return sqlSession.selectOne(NAMESPACE+"getProductNum");
    }
-//   ----------------------------------------------------------------------
+   
+   //----------------------------------------------------------------------
+   
    public int setAddProductOption(ProductOptionDTO productOptionDTO) throws Exception {
       Connection connection = DBConnection.getConnection();
       String sql = "INSERT INTO PRODUCTOPTION VALUES(PRODUCT_SEQ.NEXTVAL,?,?,?,?";
@@ -59,14 +60,13 @@ public class ProductDAO {
       int result = st.executeUpdate();
       DBConnection.disConnection(st, connection);
       return result;
-      
-      
    }
-   public List<ProductOptionDTO> getProduct_OptionList() throws Exception{
+   
+   public List<ProductOptionDTO> getProductOptionList() throws Exception{
       List<ProductOptionDTO> ar = new ArrayList<ProductOptionDTO>();
       Connection connection = DBConnection.getConnection();
       String sql = "SELECT * FROM PRODUCTOPTION ";
-      PreparedStatement st =connection.prepareStatement(sql);
+      PreparedStatement st = connection.prepareStatement(sql);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
          ProductOptionDTO productOptionDTO = new ProductOptionDTO();
@@ -77,20 +77,17 @@ public class ProductDAO {
       DBConnection.disConnection(rs, st, connection);
       return ar;
    }
-
-
    
-   
-   public static void main(String[] args) {
-      ProductDAO productDAO = new ProductDAO();
-      try {
-         List<ProductOptionDTO> ar = productDAO.getProduct_OptionList();
-         System.out.println(ar.size()!=0);
-      } catch (Exception e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }
-      
-   }
+//   public static void main(String[] args) {
+//      ProductDAO productDAO = new ProductDAO();
+//      try {
+//         List<ProductOptionDTO> ar = productDAO.getProduct_OptionList();
+//         System.out.println(ar.size()!=0);
+//      } catch (Exception e) {
+//         // TODO Auto-generated catch block
+//         e.printStackTrace();
+//      }
+//      
+//   }
 
 }

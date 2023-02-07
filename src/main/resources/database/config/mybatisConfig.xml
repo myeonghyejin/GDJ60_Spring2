@@ -10,5 +10,7 @@
   		<typeAlias type="java.lang.Long" alias="Long"/>
   		
   		<typeAlias type="com.mhj.s1.member.MemberDTO" alias="MemberDTO"/>
+  		
+  		<typeAlias type="com.mhj.s1.bankbook.BankbookDTO" alias="BankbookDTO"/>
   	</typeAliases>
   </configuration>
