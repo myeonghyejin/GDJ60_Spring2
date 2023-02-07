@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.mhj.s1.member.MemberDAO">
+  	<select id="getMemberList" resultType="MemberDTO">
+  		SELECT ID, PW, NAME, PHONE, EMAIL
+  		FROM BANKMEMBERS
+  		ORDER BY ID DESC
+  	</select>
+  	
+  	<insert id="memberJoin" parameterType="MemberDTO">
+  		INSERT INTO BANKMEMBERS
+  		VALUES (#{id}, #{pw}, #{name}, #{phone}, #{email})
+  	</insert>
+  </mapper>
